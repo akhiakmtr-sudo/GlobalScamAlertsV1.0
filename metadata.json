@@ -1,0 +1,5 @@
+{
+  "name": "Global Scam Alerts",
+  "description": "A community-driven platform to report and view information about scam companies, helping protect consumers worldwide. Features role-based access for users to report scams and for administrators to manage and verify submissions.",
+  "requestFramePermissions": []
+}
