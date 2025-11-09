@@ -1,4 +1,3 @@
-
 import React, { useEffect, useMemo, useState } from 'react';
 import { api } from '../services/api';
 import { ScamReport, ReportStatus } from '../types';
@@ -46,7 +45,7 @@ const AllScamsPage: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">All Scam Reports</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">Scam Alerts</h1>
       <p className="text-gray-600 mb-6">Browse the full list of community-reported and verified scam activities.</p>
       
       <div className="mb-6">

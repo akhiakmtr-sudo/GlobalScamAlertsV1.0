@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useMemo } from 'react';
 import { api } from '../services/api';
 import { ScamReport, ReportStatus, VerifiedAgency } from '../types';
@@ -40,6 +39,10 @@ const ScamListPage: React.FC = () => {
     );
   }, [reports, searchTerm]);
 
+  const reportsToShow = useMemo(() => {
+    return filteredReports.slice(0, 5);
+  }, [filteredReports]);
+
   return (
     <div className="space-y-16">
       {/* Banner Section */}
@@ -80,18 +83,18 @@ const ScamListPage: React.FC = () => {
         
         {loading ? (
           <div className="text-center py-10">Loading reports...</div>
-        ) : filteredReports.length > 0 ? (
+        ) : reportsToShow.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredReports.slice(0, 5).map(report => (
+            {reportsToShow.map(report => (
               <ScamReportCard key={report.id} report={report} />
             ))}
           </div>
         ) : (
           <div className="text-center py-10 bg-white rounded-lg shadow">
-              <p className="text-gray-500">No scam reports have been published yet.</p>
+              <p className="text-gray-500">{searchTerm ? "No reports found matching your search." : "No scam reports have been published yet."}</p>
           </div>
         )}
-        {reports.length > 5 && (
+        {filteredReports.length > 5 && (
             <div className="text-center mt-8">
                 <a href="#/all-scams">
                     <Button variant="primary">See More Reports</Button>
